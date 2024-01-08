@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Salon[0].Categorie)
             </th>
+            <th>
+                Stilisti
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -49,6 +52,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Categorie.ID)
             </td>
+                <td>
+                    @if (item.Stilisti != null)
+                    {
+                        foreach (var stylist in item.Stilisti)
+                        {
+                            <span>@stylist.Nume</span>
+
+                            <br />
+                        }
+                    }
+                </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
