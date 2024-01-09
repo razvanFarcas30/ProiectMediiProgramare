@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.Nume)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Oras.ID)
+                @Html.DisplayFor(modelItem => item.Oras.Nume)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Adresa)
@@ -50,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Pret)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Categorie.ID)
+                @Html.DisplayFor(modelItem => item.Categorie.NumeCategorie)
             </td>
                 <td>
                     @if (item.Stilisti != null)
@@ -63,6 +63,7 @@
                         }
                     }
                 </td>
+
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

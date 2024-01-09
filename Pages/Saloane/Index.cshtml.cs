@@ -27,7 +27,9 @@ namespace ProiectMediiProgramare.Pages.Saloane
             {
                 Salon = await _context.Salon
                 .Include(s => s.Categorie)
+                .Include(s => s.Stilisti)
                 .Include(s => s.Oras).ToListAsync();
+                
             }
         }
     }
