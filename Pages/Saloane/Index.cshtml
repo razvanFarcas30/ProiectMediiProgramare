@@ -1,15 +1,27 @@
-﻿@page
+﻿@page "/"
 @model ProiectMediiProgramare.Pages.Saloane.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Saloane</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Adauga un nou Salon</a>
 </p>
+<form method="get">
+    <input type="text" name="SearchString" value="@Model.SearchString" />
+    <select name="SelectedCategoryId">
+        <option value="">-- Select Category --</option>
+        @foreach (var category in (SelectList)ViewData["CategorieID"])
+        {
+            <option value="@category.Value" selected="@(Model.SelectedCategoryId.ToString() == category.Value ? "selected" : null)">@category.Text</option>
+
+        }
+    </select>
+    <input type="submit" value="Search" />
+</form>
 <table class="table">
     <thead>
         <tr>

@@ -21,13 +21,30 @@ namespace ProiectMediiProgramare.Pages.Orase
 
         public IList<Oras> Oras { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        
+        public IList<Salon> SelectedSaloane { get; set; }
+        public string SelectedOrasName { get; set; }
+        Oras selectedOras = null;
+        public async Task OnGetAsync(int? selectedOrasId)
         {
-            if (_context.Oras != null)
-            {
-                Oras = await _context.Oras.Include(o => o.Saloane).ToListAsync();
+            Oras = await _context.Oras.ToListAsync();
 
+            if (selectedOrasId.HasValue)
+            {
+                SelectedSaloane = await _context.Salon
+                    .Where(s => s.OrasID == selectedOrasId)
+                    .ToListAsync();
+                selectedOras = await _context.Oras
+            .FirstOrDefaultAsync(o => o.ID == selectedOrasId);
+            }
+            if (selectedOras != null)
+            {
+                SelectedOrasName = selectedOras.Nume;
+                SelectedSaloane = await _context.Salon
+                    .Where(s => s.OrasID == selectedOrasId)
+                    .ToListAsync();
             }
         }
     }
 }
+

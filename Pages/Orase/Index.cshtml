@@ -5,10 +5,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Orase</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Adauga un nou Oras</a>
 </p>
 <table class="table">
     <thead>
@@ -27,24 +27,33 @@
                     @Html.DisplayFor(modelItem => oras.Nume)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@oras.ID">Edit</a> 
-                    <a asp-page="./Details" asp-route-id="@oras.ID">Details</a> 
+                    <a asp-page="./Edit" asp-route-id="@oras.ID">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@oras.ID">Details</a>
                     <a asp-page="./Delete" asp-route-id="@oras.ID">Delete</a>
+                    <!-- Select Form -->
+                    <form method="get" asp-page="./Index" style="display:inline;">
+        <input type="hidden" name="selectedOrasId" value="@oras.ID" />
+                        <input type="submit" value="Select" class="link-button" />
+    </form>
                 </td>
             </tr>
-            @if (oras.Saloane != null && oras.Saloane.Any())
-            {
-                foreach (var salon in oras.Saloane)
-                {
-                    <tr>
-                        <td colspan="2">
-                            Salon Name: @Html.DisplayFor(modelItem => salon.Nume)
-                        </td>
-                    </tr>
-                }
-            }
+        }
+
+        @if (Model.SelectedSaloane != null && Model.SelectedSaloane.Any())
+        {
+            <tr>
+                <td colspan="2">
+                    <h2>Saloane for @Model.SelectedOrasName</h2>
+                    @foreach (var salon in Model.SelectedSaloane)
+                    {
+                        <p>@salon.Nume</p>
+                    }
+                </td>
+            </tr>
+        }
+
         
 
-}
+
     </tbody>
 </table>
