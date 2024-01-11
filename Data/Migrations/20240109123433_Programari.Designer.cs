@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProiectMediiProgramare.Data;
 
@@ -11,9 +12,10 @@ using ProiectMediiProgramare.Data;
 namespace ProiectMediiProgramare.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240109123433_Programari")]
+    partial class Programari
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -435,7 +437,7 @@ namespace ProiectMediiProgramare.Data.Migrations
                         .HasForeignKey("SalonID");
 
                     b.HasOne("ProiectMediiProgramare.Models.Stilist", "Stilist")
-                        .WithMany("Programari")
+                        .WithMany()
                         .HasForeignKey("StilistID");
 
                     b.Navigation("Client");
@@ -489,11 +491,6 @@ namespace ProiectMediiProgramare.Data.Migrations
                     b.Navigation("Programari");
 
                     b.Navigation("Stilisti");
-                });
-
-            modelBuilder.Entity("ProiectMediiProgramare.Models.Stilist", b =>
-                {
-                    b.Navigation("Programari");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,5 +8,6 @@
         public decimal Pret { get; set; }
         public int? SalonID { get; set; }
         public Salon? Salon { get; set; }
+        public ICollection<Programare>? Programari { get; set; }
     }
 }

@@ -25,7 +25,8 @@ namespace ProiectMediiProgramare.Pages.Orase
         {
             if (_context.Oras != null)
             {
-                Oras = await _context.Oras.ToListAsync();
+                Oras = await _context.Oras.Include(o => o.Saloane).ToListAsync();
+
             }
         }
     }

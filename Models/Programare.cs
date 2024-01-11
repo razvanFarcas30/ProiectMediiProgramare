@@ -10,6 +10,8 @@ namespace ProiectMediiProgramare.Models
         public Client? Client { get; set; }
         public int? SalonID { get; set; }
         public Salon? Salon { get; set; }
+        public int? StilistID { get; set; }
+        public Stilist? Stilist { get; set; }
 
         public DateTime DataProgramarii { get; set; }
     }

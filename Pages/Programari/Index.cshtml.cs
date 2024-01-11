@@ -27,7 +27,8 @@ namespace ProiectMediiProgramare.Pages.Programari
             {
                 Programare = await _context.Programare
                 .Include(p => p.Client)
-                .Include(p => p.Salon).ToListAsync();
+                .Include(p => p.Salon)
+                .Include(p => p.Stilist).ToListAsync();
             }
         }
     }
